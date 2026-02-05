@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ZostanieszMojaWalentynka?</title>
+    <link rel="stylesheet" href="valentine.css" />
+
+    <style>
+      /* 🔒 EKRAN "REGULAMINU" NA START 🔒 */
+      #overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(255, 182, 193, 0.95);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        z-index: 1000;
+      }
+
+      /* ✅ LEPIEJ WIDOCZNE NAPISY – JASNA KARTKA + CIEMNY TEKST */
+      #overlay .box {
+        background: white;
+        padding: 20px;
+        border-radius: 20px;
+        box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+        max-width: 80%;
+      }
+
+      #overlay p {
+        font-size: 22px;
+        font-weight: bold;
+        color: #d6336c;
+        line-height: 1.5;
+      }
+
+      #acceptBtn {
+        margin-top: 20px;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 20px;
+        background: #ff4f7b;
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+        font-size: 18px;
+      }
+    </style>
+  </head>
+  <body>
+
+    <!-- 🔊 UKRYTA MUZYKA W TLE -->
+    <audio id="bgMusic" loop>
+      <source src="tlo.mp3" type="audio/mpeg" />
+    </audio>
+
+    <!-- 🔒 KOMUNIKAT NA SAMYM POCZĄTKU 🔒 -->
+    <div id="overlay">
+      <div class="box">
+        <p>
+  💗 REGULAMIN WALENTYNKOWY 💗<br><br>
+          1. Nie wolno mówić "nie" ale zawsze możesz spróbować.😉<br>
+          2. Nie przechodź od razu dalej, najpierw wypróbuj wszystko.<br>
+          3. Ta walentynka będzie najlepsza jaka w życiu dostałas , w końcu moja.<br><br>
+          Kliknij „Akceptuję”, żeby przejść dalej 💞
+      </div>
+      <button id="acceptBtn">Akceptuję 💗</button>
+    </div>
+
+    <div id="valentineQuestion"><b>Zostaniesz moją walentynką?</b></div>
+
+    <button class="answerButton" onclick="location.href='thankyou.html'">
+      TAK
+    </button>
+
+    <button class="answerButton" id="noButton">Nie ma innej opcji!</button>
+
+    <br />
+
+    <img
+      src="prosze.png"
+      height="498px"
+      width="150px"
+      alt="cat asking question"
+      class="responsive"
+    />
+
+    <script>
+      const bgMusic = document.getElementById("bgMusic");
+
+      document.getElementById("acceptBtn").addEventListener("click", function () {
+        document.getElementById("overlay").style.display = "none";
+
+        // 🔊 WŁĄCZAMY CICHO MUZYKĘ W TLE
+        bgMusic.volume = 0.2; // <-- głośność (0.0 - 1.0)
+        bgMusic.play();
+      });
+
+      document
+        .getElementById("noButton")
+        .addEventListener("click", function () {
+          var yesButton = document.querySelector(
+            'button[onclick*="thankyou.html"]'
+          );
+          var currentFontSize = parseInt(
+            window.getComputedStyle(yesButton).fontSize
+          );
+          yesButton.style.fontSize = currentFontSize + 10 + "px";
+
+          const sadFaces = ["😢", "😭", "🥺", "💔", "☹️"];
+
+          const face = document.createElement("div");
+          face.innerText =
+            sadFaces[Math.floor(Math.random() * sadFaces.length)];
+
+          face.style.position = "absolute";
+
+          face.style.left =
+            window.innerWidth / 2 +
+            (Math.random() * 200 - 100) +
+            "px";
+          face.style.top =
+            window.innerHeight / 2 +
+            (Math.random() * 200 - 100) +
+            "px";
+
+          face.style.fontSize = "40px";
+          face.style.pointerEvents = "none";
+
+          document.body.appendChild(face);
+
+          setTimeout(() => {
+            face.remove();
+          }, 1500);
+        });
+    </script>
+    <iframe
+  src="music.html"
+  style="position:fixed; bottom:0; left:0; width:0; height:0; border:none; visibility:hidden;">
+</iframe>
+
+  </body>
+</html>
+

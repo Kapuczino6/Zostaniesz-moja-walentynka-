@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dziękuje</title>
+    <link rel="stylesheet" href="lastpage.css" />
+
+    <style>
+      #audio-container {
+        text-align: center;
+        margin-top: 10px;
+      }
+
+      #playBtn {
+        display: block;
+        margin: 10px auto;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 20px;
+        background: #ff8fa3;
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+      }
+
+      /* 💗 KONTAINER NA LATAJĄCE SERDUSZKA 💗 */
+      #heart-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        overflow: hidden;
+        z-index: 999;
+      }
+
+      .heart {
+        position: absolute;
+        font-size: 24px;
+        opacity: 0.7;
+        animation: float linear infinite;
+      }
+
+      @keyframes float {
+        0% {
+          transform: translateY(100vh) translateX(0);
+          opacity: 0.6;
+        }
+        50% {
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(-10vh) translateX(40px);
+          opacity: 0;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="thankyou"><b>Dzięki mała &lt;3</b></div>
+
+    <img
+      height="300px"
+      id="rizz"
+      src="dzieki.png"
+      alt="rizzler god"
+      class="responsive"
+    />
+
+    <div id="audio-container">
+      <audio id="myAudio" loop>
+        <source src="OK.mp3" type="audio/mpeg" />
+      </audio>
+
+      <button id="playBtn">Dobry Benger (wcisnij)💗</button>
+    </div>
+
+    <h1>Dawaj dalej śliczna!</h1>
+
+    <button class="button" onclick="location.href='date.html'">
+      Klikaj dalej to nie koniec.
+    </button>
+
+    <!-- MIEJSCE NA LATAJĄCE SERDUSZKA -->
+    <div id="heart-container"></div>
+
+    <script>
+      const audio = document.getElementById("myAudio");
+      const btn = document.getElementById("playBtn");
+      const container = document.getElementById("heart-container");
+
+      const hearts = ["💗","💕","💓","💖","💘","💞"];
+
+      function createHeart() {
+        const heart = document.createElement("div");
+        heart.classList.add("heart");
+
+        // Losowe serduszko
+        heart.innerText = hearts[Math.floor(Math.random() * hearts.length)];
+
+        // Losowa pozycja startowa
+        heart.style.left = Math.random() * 100 + "vw";
+
+        // Losowy rozmiar
+        const size = Math.random() * 20 + 20; // 20px - 40px
+        heart.style.fontSize = size + "px";
+
+        // Losowa prędkość
+        const duration = Math.random() * 4 + 3; // 3-7 sekund
+        heart.style.animationDuration = duration + "s";
+
+        container.appendChild(heart);
+
+        // Usuwamy serduszko po animacji, żeby nie zapchać strony
+        setTimeout(() => {
+          heart.remove();
+        }, duration * 1000);
+      }
+
+      btn.addEventListener("click", function () {
+        audio.play();
+        btn.style.display = "none";
+
+        // ⭐ PODMIANA GIFA PO KLIKNIĘCIU
+        document.getElementById("rizz").src = "cat GIF.gif";
+
+        // Tworzymy nowe serduszka co 300ms
+        setInterval(createHeart, 300);
+      });
+    </script>
+    <iframe
+  src="music.html"
+  style="position:fixed; bottom:0; left:0; width:0; height:0; border:none; visibility:hidden;">
+</iframe>
+
+  </body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+</head>
+<body>
+  <audio id="bgMusic" loop>
+    <source src="tlo.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    const audio = document.getElementById("bgMusic");
+    audio.volume = 0.15;
+
+    window.addEventListener("message", function(event) {
+      if (event.data === "playMusic") {
+        audio.play();
+      }
+    });
+  </script>
+</body>
+</html>

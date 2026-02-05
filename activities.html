@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Co-Robimy</title>
+    <link rel="stylesheet" href="activities.css" />
+
+    <style>
+      body.dimmed {
+        background: rgba(0, 0, 0, 0.15);
+        transition: background 1s;
+      }
+
+      #heart-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        overflow: hidden;
+        z-index: 999;
+      }
+
+      .heart {
+        position: absolute;
+        font-size: 24px;
+        opacity: 0.7;
+        animation: float linear infinite;
+      }
+
+      @keyframes float {
+        0% {
+          transform: translateY(100vh) translateX(0);
+          opacity: 0.6;
+        }
+        50% {
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(-10vh) translateX(40px);
+          opacity: 0;
+        }
+      }
+
+      #crazyText {
+        display: none;
+        position: fixed;
+        top: 65%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: rgba(255, 143, 163, 0.9);
+        color: white;
+        padding: 20px 30px;
+        border-radius: 20px;
+        font-size: 20px;
+        text-align: center;
+        z-index: 1000;
+        box-shadow: 0 0 20px rgba(255, 100, 150, 0.5);
+      }
+#otherText {
+  display: none;
+  position: fixed;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(255, 180, 200, 0.9);
+  color: white;
+  padding: 15px 25px;
+  border-radius: 15px;
+  font-size: 18px;
+  text-align: center;
+  z-index: 1000;
+  box-shadow: 0 0 15px rgba(255, 120, 160, 0.7);
+}
+
+      .victory-heart {
+        position: fixed;
+        bottom: -50px;
+        font-size: 30px;
+        animation: victory 1.5s ease-out forwards;
+        pointer-events: none;
+        z-index: 1001;
+      }
+
+      @keyframes victory {
+        0% {
+          transform: translateY(0) scale(0.5);
+          opacity: 1;
+        }
+        50% {
+          transform: translateY(-300px) scale(1.2);
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(-600px) scale(0.8);
+          opacity: 0;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="activityquestion">
+      <b>Co robimy później? ♡( ◡‿◡ )</b>
+    </div>
+
+    <div class="activities-selection">
+      <div class="activity-item">
+        <img src="escape.jpg" alt="escape" />
+        <label>
+          <input type="checkbox" name="activities" value="aquarium" />
+          Escape room
+        </label>
+      </div>
+
+      <div class="activity-item">
+        <img src="spacer.jpg" alt="Spacer" />
+        <label>
+          <input type="checkbox" name="activities" value="arcade" />
+          Spacer
+        </label>
+      </div>
+
+      <div class="activity-item">
+        <img src="kino.jpg" alt="cinema" />
+        <label>
+          <input type="checkbox" name="activities" value="cinema" />
+          Kino
+        </label>
+      </div>
+
+      <div class="activity-item">
+        <img src="kregle.jpg" alt="ceramics" />
+        <label>
+          <input type="checkbox" name="activities" value="ceramics" />
+          Kręgle/bilard
+        </label>
+      </div>
+
+      <div class="activity-item">
+        <img src="netflix.jpg" alt="netflix" />
+        <label>
+          <input type="checkbox" name="activities" value="kunsthalle" />
+          Netflix
+        </label>
+      </div>
+
+      <div class="activity-item">
+        <img src="crack.jpg" alt="crack" />
+        <label>
+          <input
+            type="checkbox"
+            id="cracking"
+            name="activities"
+            value="park.jpeg"
+          />
+          Cracking
+        </label>
+      </div>
+    </div>
+
+    <button class="button" onclick="location.href='lastpage.html'">
+      Więc....
+    </button>
+
+    <audio id="crazyMusic" loop>
+      <source src="robimy.mp3" type="audio/mpeg" />
+    </audio>
+
+    <div id="heart-container"></div>
+
+    <div id="crazyText">
+      Uważaj, z tego moga byc dzieci! 💗
+    </div>
+
+    <div id="otherText">
+      Dobry wybór, ale to jeszcze nie to...
+    </div>
+
+    <script>
+      const cracking = document.getElementById("cracking");
+      const audio = document.getElementById("crazyMusic");
+      const container = document.getElementById("heart-container");
+      const text = document.getElementById("crazyText");
+      const otherText = document.getElementById("otherText");
+
+      const hearts = ["💗", "💕", "💓", "💖", "💘", "💞"];
+
+      function createHeart() {
+        const heart = document.createElement("div");
+        heart.classList.add("heart");
+        heart.innerText =
+          hearts[Math.floor(Math.random() * hearts.length)];
+
+        heart.style.left = Math.random() * 100 + "vw";
+
+        const size = Math.random() * 20 + 20;
+        heart.style.fontSize = size + "px";
+
+        const duration = Math.random() * 4 + 3;
+        heart.style.animationDuration = duration + "s";
+
+        container.appendChild(heart);
+
+        setTimeout(() => {
+          heart.remove();
+        }, duration * 1000);
+      }
+
+      function victoryBurst() {
+        for (let i = 0; i < 12; i++) {
+          setTimeout(() => {
+            const vHeart = document.createElement("div");
+            vHeart.classList.add("victory-heart");
+            vHeart.innerText =
+              hearts[Math.floor(Math.random() * hearts.length)];
+
+            vHeart.style.left = Math.random() * 100 + "vw";
+            vHeart.style.fontSize = Math.random() * 20 + 25 + "px";
+
+            document.body.appendChild(vHeart);
+
+            setTimeout(() => vHeart.remove(), 1500);
+          }, i * 120);
+        }
+      }
+
+      cracking.addEventListener("change", function () {
+        if (this.checked) {
+          otherText.style.display = "none";
+
+          audio.currentTime = 0;
+          audio.play();
+          document.body.classList.add("dimmed");
+          text.style.display = "block";
+
+          victoryBurst();
+
+          window.heartRain = setInterval(createHeart, 300);
+        } else {
+          audio.pause();
+          audio.currentTime = 0;
+
+          document.body.classList.remove("dimmed");
+          text.style.display = "none";
+
+          clearInterval(window.heartRain);
+          container.innerHTML = "";
+
+          document
+            .querySelectorAll(".victory-heart")
+            .forEach((h) => h.remove());
+        }
+      });
+
+      document
+        .querySelectorAll('input[name="activities"]')
+        .forEach((box) => {
+          if (box.id !== "cracking") {
+            box.addEventListener("change", function () {
+              if (this.checked) {
+                otherText.style.display = "block";
+              } else {
+                otherText.style.display = "none";
+              }
+            });
+          }
+        });
+    </script>
+    <iframe
+  src="music.html"
+  style="position:fixed; bottom:0; left:0; width:0; height:0; border:none; visibility:hidden;">
+</iframe>
+
+  </body>
+</html>
+
+

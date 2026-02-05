@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Data</title>
+    <link rel="stylesheet" href="date.css" />
+
+    <style>
+      /* ---- ANIMACJA PISANIA NAPISU ---- */
+      #typingText {
+        display: inline-block;
+        white-space: nowrap;
+        overflow: hidden;
+        border-right: 2px solid pink;
+        padding-right: 5px;
+        animation: blinkCursor 0.8s infinite;
+      }
+
+      @keyframes blinkCursor {
+        50% {
+          border-color: transparent;
+        }
+      }
+
+      /* ---- MAŁY ZABAWNY DOPISEK ---- */
+      #funnyNote {
+        font-size: 12px;
+        color: #ff66b2;
+        margin-top: 5px;
+        font-style: italic;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1 title="choose a date">
+      <span id="typingText"></span>
+    </h1>
+
+    <form class="form-group" id="dateForm">
+      <label>Dokładny dzień: ( wybierz datę ) </label>
+      <div>
+        <input type="date" id="dateInput" />
+        <button class="button" type="submit" formaction="food.html">
+          Potwierdz
+        </button>
+      </div>
+
+      <!-- TWÓJ PUNKT 4 😏 -->
+      <div id="funnyNote">wybierz mądrze... 😏</div>
+    </form>
+
+    <script>
+      // ----- ANIMOWANY NAPIS (EFEKT PISANIA) -----
+      const text = "Jesteś wolna....";
+      const typingElement = document.getElementById("typingText");
+
+      let index = 0;
+
+      function typeText() {
+        if (index < text.length) {
+          typingElement.textContent += text.charAt(index);
+          index++;
+          setTimeout(typeText, 150); // tempo pisania
+        }
+      }
+
+      typeText();
+
+      // ----- BLOKADA POTWIERDZENIA BEZ DATY (zostało jak miałeś) -----
+      const dateInput = document.getElementById("dateInput");
+      const form = document.getElementById("dateForm");
+
+      form.addEventListener("submit", function (event) {
+        if (!dateInput.value) {
+          event.preventDefault();
+          alert("Najpierw wybierz datę! 💔");
+        }
+      });
+    </script>
+    <iframe
+  src="music.html"
+  style="position:fixed; bottom:0; left:0; width:0; height:0; border:none; visibility:hidden;">
+</iframe>
+
+  </body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Deser</title>
+    <link rel="stylesheet" href="dessert.css" />
+
+    <style>
+      .info {
+        display: none;
+        font-size: 16px;
+        color: #d63384;
+        margin-top: 5px;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="dessertquestion">Deser też strzelimy a co</div>
+
+    <div class="dessert-selection">
+      <div class="dessert-item">
+        <img src="bubleetea.jpg" alt="bublee tea" />
+        <label>
+          <input
+            type="checkbox"
+            name="dessert"
+            onclick="toggleText('bobaText', this)"
+          />
+          Kulki z wodą
+        </label>
+        <div id="bobaText" class="info">Co to za deser...</div>
+      </div>
+
+      <div class="dessert-item">
+        <img src="lody.jpg" alt="lody" />
+        <label>
+          <input
+            type="checkbox"
+            name="dessert"
+            onclick="toggleText('lodyText', this)"
+          />
+          Lodzik
+        </label>
+        <div id="lodyText" class="info">😏</div>
+      </div>
+
+      <div class="dessert-item">
+        <img src="piwo.jpg" alt="piwo" />
+        <label>
+          <input
+            type="checkbox"
+            name="dessert"
+            onclick="toggleText('piwoText', this)"
+          />
+          Piwko
+        </label>
+        <div id="piwoText" class="info">Ale to żubra jak cos</div>
+      </div>
+
+      <div class="dessert-item">
+        <img src="deser.jpg" alt="deser" />
+        <label>
+          <input
+            type="checkbox"
+            name="dessert"
+            onclick="toggleText('deserText', this)"
+          />
+          Jakis tam deser
+        </label>
+        <div id="deserText" class="info">Całkiem dobry pomysł</div>
+      </div>
+
+      <div class="dessert-item">
+        <img src="drink.jpg" alt="Drink" />
+        <label>
+          <input
+            type="checkbox"
+            name="dessert"
+            onclick="toggleText('drinkText', this)"
+          />
+          Drink z prądem
+        </label>
+        <div id="drinkText" class="info">to juz Alkoholizm</div>
+      </div>
+
+      <div class="dessert-item">
+        <img src="slodycze.jpg" alt="slodycze" />
+        <label>
+          <input
+            type="checkbox"
+            name="dessert"
+            onclick="toggleText('slodyczeText', this)"
+          />
+          Słodycze jakie se wymyślisz
+        </label>
+        <div id="slodyczeText" class="info">
+         Idealne
+        </div>
+      </div>
+    </div>
+
+    <button class="button" onclick="location.href='activities.html'">
+      Jeszcze chwila
+    </button>
+
+    <script>
+      function toggleText(id, checkbox) {
+        let text = document.getElementById(id);
+        if (checkbox.checked) {
+          text.style.display = "block";
+        } else {
+          text.style.display = "none";
+        }
+      }
+    </script>
+    <iframe
+  src="music.html"
+  style="position:fixed; bottom:0; left:0; width:0; height:0; border:none; visibility:hidden;">
+</iframe>
+
+  </body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jedzenie</title>
+  <link rel="stylesheet" href="food.css" />
+
+  <style>
+    .info {
+      display: none;
+      font-size: 16px;
+      color: #d63384;
+      margin-top: 5px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="foodquestion">
+    <b>Na jakie jedzonko wyskoczymy?</b>
+  </div>
+
+  <div class="food-selection">
+
+    <div class="food-item">
+      <img src="burgers.jpg" alt="Burger" />
+      <label>
+        <input type="checkbox" name="food" onclick="toggleText('burgerText', this)" />
+        Dojebany Burger
+      </label>
+      <div id="burgerText" class="info">Tez tak myśle</div>
+    </div>
+
+    <div class="food-item">
+      <img src="kebab.jpg" alt="kebab" />
+      <label>
+        <input type="checkbox" name="food" onclick="toggleText('kebabText', this)" />
+        Smaczny Kebsik
+      </label>
+      <div id="kebabText" class="info">Oj tak tak </div>
+    </div>
+
+    <div class="food-item">
+      <img src="sushi.jpg" alt="sushi" />
+      <label>
+        <input type="checkbox" name="food" onclick="toggleText('sushiText', this)" />
+        Sushi
+      </label>
+      <div id="sushiText" class="info">Pewnie Ksieżniczko <3</div>
+    </div>
+
+    <div class="food-item">
+      <img src="pizza.jpg" alt="pizza" />
+      <label>
+        <input type="checkbox" name="food" onclick="toggleText('pizzaText', this)" />
+        Picka
+      </label>
+      <div id="pizzaText" class="info">Okej okej jestem zaskoczony</div>
+    </div>
+
+    <div class="food-item">
+      <img src="maczek.jpg" alt="Maczek" />
+      <label>
+        <input type="checkbox" name="food" onclick="toggleText('maczekText', this)" />
+        Maczek
+      </label>
+      <div id="maczekText" class="info">To taki klasyczek</div>
+    </div>
+
+    <div class="food-item">
+      <img src="makaron.jpg" alt="makaron" />
+      <label>
+        <input type="checkbox" name="food" onclick="toggleText('makaronText', this)" />
+        Makaron
+      </label>
+      <div id="makaronText" class="info">Tego sie wlasnie spodziewalem</div>
+    </div>
+
+    <div class="food-item">
+      <img src="zapiekanka.jpg" alt="Zapiekanka" />
+      <label>
+        <input type="checkbox" name="food" onclick="toggleText('zapiekankaText', this)" />
+        Buła zapiekana
+      </label>
+      <div id="zapiekankaText" class="info">nie spodziewalem sie maja</div>
+    </div>
+
+  </div>
+
+  <button class="button" onclick="location.href='dessert.html'">
+    To nie koniec spokojnie...
+  </button>
+
+  <script>
+    function toggleText(id, checkbox) {
+      let text = document.getElementById(id);
+      if (checkbox.checked) {
+        text.style.display = "block";
+      } else {
+        text.style.display = "none";
+      }
+    }
+  </script>
+<iframe
+  src="music.html"
+  style="position:fixed; bottom:0; left:0; width:0; height:0; border:none; visibility:hidden;">
+</iframe>
+
+</body>
+</html>
+
