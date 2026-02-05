@@ -107,61 +107,55 @@
 
     <div id="heart-container"></div>
 
-    <script>
-      const audio = document.getElementById("myAudio");
-      const btn = document.getElementById("playBtn");
-      const container = document.getElementById("heart-container");
+<script>
+  const audio = document.getElementById("myAudio");
+  const btn = document.getElementById("playBtn");
+  const container = document.getElementById("heart-container");
 
-      const firstImage = document.getElementById("rizz");
-      const gifContainer = document.getElementById("gif-container");
-      const gifImage = document.getElementById("gif-image");
-      const gifLink = document.getElementById("gif-link");
+  // ❗ TO JEST TO, CZEGO CI BRAKOWAŁO ❗
+  const firstImage = document.getElementById("rizz");   // ← DODAŁEM
+  const gifContainer = document.getElementById("gif-container");
+  const gifImage = document.getElementById("gif-image");
+  const gifLink = document.getElementById("gif-link");
 
-      const hearts = ["💗","💕","💓","💖","💘","💞"];
+  const hearts = ["💗","💕","💓","💖","💘","💞"];
 
-      function createHeart() {
-        const heart = document.createElement("div");
-        heart.classList.add("heart");
+  function createHeart() {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
 
-        heart.innerText = hearts[Math.floor(Math.random() * hearts.length)];
-        heart.style.left = Math.random() * 100 + "vw";
+    heart.innerText = hearts[Math.floor(Math.random() * hearts.length)];
 
-        const size = Math.random() * 20 + 20;
-        heart.style.fontSize = size + "px";
+    heart.style.left = Math.random() * 100 + "vw";
 
-        const duration = Math.random() * 4 + 3;
-        heart.style.animationDuration = duration + "s";
+    const size = Math.random() * 20 + 20;
+    heart.style.fontSize = size + "px";
 
-        container.appendChild(heart);
+    const duration = Math.random() * 4 + 3;
+    heart.style.animationDuration = duration + "s";
 
-        setTimeout(() => {
-          heart.remove();
-        }, duration * 1000);
-      }
+    container.appendChild(heart);
 
-      btn.addEventListener("click", function () {
-        audio.play();
-        btn.style.display = "none";
+    setTimeout(() => {
+      heart.remove();
+    }, duration * 1000);
+  }
 
-        // ❗ NAJWAŻNIEJSZE ZMIANY ❗
-        firstImage.style.display = "none";   // ← ZNIKA STARY OBRAZEK
-        gifContainer.style.display = "block"; // ← POJAWIA SIĘ NOWY GIF
+  btn.addEventListener("click", function () {
+    audio.play();
+    btn.style.display = "none";
 
-        // TWÓJ GIF (JEST TEŻ LINKIEM)
-        const gifURL = "https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExN2hlMXY5cHUwZnJneWNxbHVqdXd3eHM2aXdhM3htbmQ0aHc4M3VpMSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/uwxi8XqnwmEl8Tov2W/giphy.gif";
+    // ✅ TERAZ TO NA PEWNO ZADZIAŁA:
+    firstImage.style.display = "none";   // ZNIKA STARY OBRAZEK
+    gifContainer.style.display = "block"; // POJAWIA SIĘ NOWY GIF
 
-        gifImage.src = gifURL;
-        gifLink.href = gifURL;
+    // Twój GIF (jest też linkiem)
+    const gifURL = "https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExN2hlMXY5cHUwZnJneWNxbHVqdXd3eHM2aXdhM3htbmQ0aHc4M3VpMSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/uwxi8XqnwmEl8Tov2W/giphy.gif";
 
-        setInterval(createHeart, 300);
-      });
-    </script>
+    gifImage.src = gifURL;
+    gifLink.href = gifURL;
 
-    <iframe
-      src="music.html"
-      style="position:fixed; bottom:0; left:0; width:0; height:0; border:none; visibility:hidden;">
-    </iframe>
-
-  </body>
-</html>
+    setInterval(createHeart, 300);
+  });
+</script>
 
